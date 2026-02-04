@@ -8,6 +8,7 @@ A web-based application to digitize student admissions and reduce manual paperwo
 - Admin dashboard
 - Approval / rejection system
 - Responsive UI with dark theme
+- Note: Database file is auto-created on first run.
 
 ## 🛠 Tech Stack
 - Python
