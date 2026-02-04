@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Apply{% endblock %}
+
+{% block content %}
+<h3 class="mb-4">Admission Form</h3>
+
+<form method="POST" class="card p-4 shadow-sm">
+    <input class="form-control mb-3" name="name" placeholder="Full Name" required>
+    <input class="form-control mb-3" name="email" placeholder="Email" required>
+    <input class="form-control mb-3" name="phone" placeholder="Phone" required>
+
+    <select class="form-select mb-3" name="course" required>
+        <option value="">Select Course</option>
+        <option>BCA</option>
+        <option>BSc</option>
+        <option>BCom</option>
+    </select>
+
+    <input class="form-control mb-3" name="marks" placeholder="Previous Marks (%)" required>
+
+    <button class="btn btn-success">Submit Application</button>
+</form>
+{% endblock %}

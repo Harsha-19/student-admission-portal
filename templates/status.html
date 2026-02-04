@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if application %}
+<div class="card p-4 shadow-sm">
+    <h4>Status: 
+        <span class="badge bg-info">{{ application.status }}</span>
+    </h4>
+    <p class="mt-2">Application ID: <b>{{ application.application_id }}</b></p>
+</div>
+{% else %}
+<p class="text-danger">Invalid Application ID</p>
+{% endif %}
+
+{% endblock %}

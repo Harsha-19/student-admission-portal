@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3>Admin Dashboard</h3>
+    <a href="/admin/logout" class="btn btn-outline-danger btn-sm">Logout</a>
+</div>
+
+<!-- Stats -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card p-3 text-center">
+            <h6>Total</h6>
+            <h3>{{ total }}</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card p-3 text-center">
+            <h6>Pending</h6>
+            <h3 class="text-warning">{{ pending }}</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card p-3 text-center">
+            <h6>Approved</h6>
+            <h3 class="text-success">{{ approved }}</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card p-3 text-center">
+            <h6>Rejected</h6>
+            <h3 class="text-danger">{{ rejected }}</h3>
+        </div>
+    </div>
+</div>
+<a href="/admin/download" class="btn btn-outline-info btn-sm mb-3">
+    Download Excel
+</a>
+
+<!-- Applications Table -->
+<div class="card p-3">
+    <h5 class="mb-3">Applications</h5>
+
+    <table class="table table-dark table-hover table-sm align-middle">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Marks</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for app in applications %}
+            <tr>
+                <td>{{ app.application_id }}</td>
+                <td>{{ app.name }}</td>
+                <td>{{ app.course }}</td>
+                <td>{{ app.marks }}</td>
+                <td>
+                    <span class="badge 
+                        {% if app.status == 'Approved' %}bg-success
+                        {% elif app.status == 'Rejected' %}bg-danger
+                        {% else %}bg-warning{% endif %}">
+                        {{ app.status }}
+                    </span>
+                </td>
+                <td>
+                    {% if app.status == "Pending" %}
+                        <a href="{{ url_for('admin.approve', id=app.id) }}" class="btn btn-success btn-sm">Approve</a>
+                        <a href="{{ url_for('admin.reject', id=app.id) }}" class="btn btn-danger btn-sm">Reject</a>
+                    {% else %}
+                        —
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
