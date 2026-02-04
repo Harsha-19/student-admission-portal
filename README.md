@@ -20,5 +20,5 @@ A web-based application to digitize student admissions and reduce manual paperwo
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/yourusername/student-admission-portal.git
+git clone https://github.com/Harsha-19/student-admission-portal.git
 cd student-admission-portal
